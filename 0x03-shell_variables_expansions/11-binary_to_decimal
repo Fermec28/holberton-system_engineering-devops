@@ -1,2 +1,2 @@
 #!/bin/bash
-echo -e "$((2#$BYNARY))\n"
+echo $((2#$BYNARY))
