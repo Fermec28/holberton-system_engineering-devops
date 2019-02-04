@@ -1,2 +1,2 @@
 #!/bin/bash
-echo $(($water#$WATER + $stir#$STIR))
+echo "obase=behlnort;$(($water#$WATER + $stir#$STIR))" | bc
