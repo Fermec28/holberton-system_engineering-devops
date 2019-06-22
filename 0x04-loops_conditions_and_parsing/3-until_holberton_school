@@ -1,1 +1,8 @@
 #!/usr/bin/env bash
+#print 10 times with until
+i=0
+until [ $i -ge 10 ]
+do
+    echo "Holberton School"
+    ((i++))
+done
