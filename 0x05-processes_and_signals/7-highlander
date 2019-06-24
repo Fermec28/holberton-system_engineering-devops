@@ -1,1 +1,8 @@
 #!/usr/bin/env bash
+# script no dies with SIGTERM signal
+while :
+do
+    trap "echo 'I am invincible!!!'" SIGTERM
+    echo "To infinity and beyond"
+    sleep 2
+done
