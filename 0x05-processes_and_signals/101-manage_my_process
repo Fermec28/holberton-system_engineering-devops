@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+#Daemon handler
+case "$1" in
+    "start")
+	./manage_my_process &
+	pgrep -f manage_my_process > /var/run/my_process.pid
+	echo "manage_my_process started"
+	;;
+    "stop")
+	sudo rm /var/run/my_process.pid
+	pkill -f manage_my_process
+	echo "manage_my_process stopped"
+	;;
+
+    "restart")
+	pkill -f manage_my_process
+	sudo rm /var/run/my_process.pid
+	./manage_my_process &
+	pgrep -f manage_my_process > /var/run/my_process.pid
+	echo "manage_my_process restarted"
+	;;
+    *)
+	echo "Usage: manage_my_process {start|stop|restart}"
+	;;
+esac
