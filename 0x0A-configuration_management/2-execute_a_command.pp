@@ -1,1 +1,4 @@
-#!/usr/bin/env bash
+exec { 'pkill':
+  command => 'pkill killmenow',
+  provider    => 'shell'
+}
