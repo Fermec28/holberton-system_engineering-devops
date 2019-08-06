@@ -1,4 +1,4 @@
-exec { 'pkill':
-  command => '/usr/bin/pkill killmenow',
-  provider    => 'shell'
+# execute command from puppet
+exec { 'killmenow':
+  command => '/usr/bin/pkill killmenow'
 }
