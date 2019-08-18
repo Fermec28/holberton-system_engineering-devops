@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+# trying devops
+
+sudo apt-get update
+sudo apt-get -y install nginx
+echo "Holberton School" | sudo tee /usr/share/nginx/html/index.html
+echo "Holberton School" | sudo tee /var/www/html/index.nginx-debian.html
+redirect="\\\trewrite ^/redirect_me https://www.youtube.com/watch?v=QH2-TGUlwu4 permanent;\n"
+sudo sed -i "37i $redirect" /etc/nginx/sites-available/default
+
+response="\\\t\tadd_header X-Served-By $HOSTNAME;\n"
+sudo sed -i "54i $response" /etc/nginx/sites-available/default
+sudo service nginx restart
