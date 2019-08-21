@@ -2,9 +2,16 @@
 # blah
 
 my_function() {
-    for i in "www" "lb-01" "web-01" "web-02"
+    for i in $list
     do
-	dig "$i"."$1" | grep -A1 'ANSWER SECTION:' | grep "$i"."$1" | awk -v var="$i" '{print "The subdomain " var " is a " $4 " record and points to " $5 }'
+	dig "$i.$1" | grep -A1 'ANSWER SECTION:' | grep "$i.$1" | awk -v var="$i" '{print "The subdomain " var " is a " $4 " record and points to " $5 }'
     done
 }
+
+if [ "$#" -eq 1 ]
+then
+    list="www lb-01 web-01 web-02"
+else
+    list="$2"
+fi
 my_function "$1"
