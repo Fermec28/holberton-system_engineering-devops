@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+# blah
+
+my_function() {
+    for i in "www" "lb-01" "web-01" "web-02"
+    do
+	dig "$i"."$1" | grep -A1 'ANSWER SECTION:' | grep "$i"."$1" | awk -v var="$i" '{print "The subdomain " var " is a " $4 " record and points to " $5 }'
+    done
+}
+my_function "$1"
