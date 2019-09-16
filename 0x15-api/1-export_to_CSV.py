@@ -16,10 +16,10 @@ if __name__ == "__main__":
         data = []
         for task in tasks.json():
             row = []
-            row.append(user["id"])
-            row.append(user["username"])
-            row.append(task["completed"])
-            row.append(task["title"])
+            row.append(user.get("id"))
+            row.append(user.get("username"))
+            row.append(task.get("completed"))
+            row.append(task.get("title"))
             data.append(row)
         writer.writerows(data)
     writeFile.close()
