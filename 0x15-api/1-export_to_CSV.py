@@ -13,13 +13,10 @@ if __name__ == "__main__":
                          params=payload)
     with open('{}.csv'.format(argv[1]), 'w') as writeFile:
         writer = csv.writer(writeFile, quoting=csv.QUOTE_ALL)
-        data = []
         for task in tasks.json():
             row = []
-            row.append(user.get("id"))
+            row.append(argv[1])
             row.append(user.get("username"))
             row.append(task.get("completed"))
             row.append(task.get("title"))
-            data.append(row)
-        writer.writerows(data)
-    writeFile.close()
+            writer.writerow(row)
