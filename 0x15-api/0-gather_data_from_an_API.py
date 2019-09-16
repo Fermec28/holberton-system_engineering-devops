@@ -9,7 +9,7 @@ if __name__ == "__main__":
                         format(argv[1]))
     user_name = user.json()['name']
     tasks = requests.get('https://jsonplaceholder.typicode.com/todos',
-                     params=payload)
+                         params=payload)
     done = list(filter(lambda x: x["completed"] is True, tasks.json()))
     print("Employee {} is done with tasks({}/{}):".format(user_name,
           len(done), len(tasks.json())))
