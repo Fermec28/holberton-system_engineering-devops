@@ -14,4 +14,4 @@ if __name__ == "__main__":
     print("Employee {} is done with tasks({}/{}):".format(user_name,
           len(done), len(tasks.json())))
     for task_done in done:
-        print("\t{}".format(task_done.get("title")))
+        print("\t {}".format(task_done.get("title")))
