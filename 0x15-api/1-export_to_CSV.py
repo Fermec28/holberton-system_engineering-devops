@@ -14,9 +14,5 @@ if __name__ == "__main__":
     with open('{}.csv'.format(argv[1]), 'w') as writeFile:
         writer = csv.writer(writeFile, quoting=csv.QUOTE_ALL)
         for task in tasks.json():
-            row = []
-            row.append(argv[1])
-            row.append(user.get("username"))
-            row.append(task.get("completed"))
-            row.append(task.get("title"))
-            writer.writerow(row)
+            writer.writerow([argv[1], user.get("username"),
+                             task.get("completed"), task.get("title")])
