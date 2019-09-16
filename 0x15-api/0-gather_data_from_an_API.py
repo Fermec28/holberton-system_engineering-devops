@@ -6,12 +6,12 @@ if __name__ == "__main__":
 
     payload = {'userId': argv[1]}
     user = requests.get('https://jsonplaceholder.typicode.com/users/{}'.
-                        format(argv[1]))
-    user_name = user.json().get('name')
-    tasks = requests.get('https://jsonplaceholder.typicode.com/todos',
-                         params=payload)
-    done = list(filter(lambda x: x.get("completed") is True, tasks.json()))
+                        format(argv[1])).json()
+    tasks = requests.get('https://jsonplaceholder.typicode.com/todos?userId={}'
+                         .format(argv[1])).json()
+    user_name = user.get('name')
+    done = list(filter(lambda x: x.get("completed") is True, tasks))
     print("Employee {} is done with tasks({:d}/{:d}):".format(user_name,
-          len(done), len(tasks.json())))
+          len(done), len(tasks)))
     for task_done in done:
         print("\t {}".format(task_done.get("title")))
