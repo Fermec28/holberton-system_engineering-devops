@@ -12,9 +12,9 @@ def top_ten(subreddit):
         result = requests.get(url, headers=headers, params=payload,
                               allow_redirects=False).json()
     except:
-        return None
+        print(None)
     if ("data" in result and "children" in result.get("data")):
         for post in result.get("data").get("children"):
             print(post.get("data").get("title"))
     else:
-        return None
+        print(None)
