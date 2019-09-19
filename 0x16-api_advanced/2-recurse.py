@@ -17,7 +17,8 @@ def recurse(subreddit, hot_list=[], after=None):
         for post in result.get("data").get("children"):
             hot_list.append(post.get("data").get("title"))
         if "after" in result.get("data") and result.get("data").get("after"):
-            return recurse(subreddit, hot_list, result.get("data").get("after"))
+            return recurse(subreddit, hot_list,
+                           result.get("data").get("after"))
         else:
             return hot_list
     else:
