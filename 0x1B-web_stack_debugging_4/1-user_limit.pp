@@ -4,7 +4,7 @@ exec { 'change hard':
     	     	 /etc/security/limits.conf",
     provider => shell
 }
--> exec { 'change hard':
+-> exec { 'soft hard':
     command  => "sed -i 's/holberton soft nofile 4/holberton soft nofile 1001/'\
     	     	 /etc/security/limits.conf",
     provider => shell
